@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #0078D7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005a9e;
+}
+
+#jsonResult {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 600px;
+  white-space: pre-wrap;
+}
