@@ -7,7 +7,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 
 # تحميل الموديل مرة واحدة
-model_path = "runs/train/my_yolov8_model/weights/best.pt"
+model_path = "backend/runs/train/my_yolov8_model/weights/best.pt"
+
 model = YOLO(model_path)
 
 app = FastAPI()
