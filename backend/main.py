@@ -5,15 +5,16 @@ from flirimageextractor import FlirImageExtractor
 import base64
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 
 # تحميل الموديل مرة واحدة
-model_path = "backend/runs/train/my_yolov8_model/weights/best.pt"
-
+BASE_DIR = Path(__file__).parent
+model_path = str(BASE_DIR / "runs" / "train" / "my_yolov8_model" / "weights" / "best.pt")
 model = YOLO(model_path)
 
 app = FastAPI()
-from fastapi.middleware.cors import CORSMiddleware
 
+# السماح بالاتصال من أي مكان (CORS)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # ممكن تخصصها على http://localhost:5500 فقط
@@ -22,15 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# السماح بالاتصال من أي مكان (CORS)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 def classify_component(name, tmax):
     if name == "antenna":
