@@ -11,6 +11,8 @@ WORKDIR /app
 
 # نسخ متطلبات المشروع وتثبيتها
 COPY backend/requirements.txt .
+# تحديث pip قبل تثبيت الحزم
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # نسخ باقي ملفات المشروع
@@ -33,3 +35,5 @@ EXPOSE 8000
 
 # أمر تشغيل FastAPI
 CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"]
+
+
