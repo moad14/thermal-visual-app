@@ -11,9 +11,9 @@ WORKDIR /app
 
 # نسخ متطلبات المشروع وتثبيتها
 COPY backend/requirements.txt .
-# تحديث pip قبل تثبيت الحزم
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+# تحديث pip وتثبيت الحزم
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # نسخ باقي ملفات المشروع
 COPY backend ./backend
@@ -29,10 +29,10 @@ RUN if [ -n "${MODEL_URL}" ]; then \
       curl -L -o backend/runs/train/my_yolov8_model/weights/best.pt "${MODEL_URL}"; \
     fi
 
-# تعيين منفذ التطبيق
+# تعيين منفذ التطبيق + ضبط اللوغز
 ENV PORT=8000
+ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
 
 # أمر تشغيل FastAPI
 CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"]
-
