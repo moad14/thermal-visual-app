@@ -36,3 +36,7 @@ EXPOSE 8000
 
 # أمر تشغيل FastAPI
 CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"]
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt --timeout=100 --retries=5 -i https://pypi.org/simple
+
+
