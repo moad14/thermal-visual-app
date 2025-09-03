@@ -23,7 +23,7 @@ RUN mkdir -p backend/runs/train/my_yolov8_model/weights
 
 # تنزيل الموديل إذا تم تمرير رابط URL
 ARG MODEL_URL
-RUN if [ -n "${MODEL_URL}"]; then \
+RUN if [ -n "${MODEL_URL}" ]; then \
       echo "🔽 تنزيل الموديل من ${MODEL_URL}" && \
       curl -L --retry 5 --retry-delay 10 -o backend/runs/train/my_yolov8_model/weights/best.pt "${MODEL_URL}"; \
     fi
