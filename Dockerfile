@@ -1,4 +1,4 @@
-# استخدم صورة Python الرسمية الخفيفة
+# استخدم Python 3.10 Slim
 FROM python:3.10-slim
 
 # منع التفاعلية وتسريع التشغيل
@@ -9,13 +9,15 @@ ENV PYTHONUNBUFFERED=1
 # إنشاء مجلد المشروع
 WORKDIR /app
 
-# نسخ الملفات الخاصة بالـ backend
+# نسخ متطلبات المشروع أولًا لتسريع cache
 COPY backend/requirements.txt .
-COPY backend/ .
 
 # تحديث pip وتثبيت المتطلبات
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
+
+# نسخ باقي ملفات المشروع
+COPY backend/ .
 
 # تشغيل FastAPI باستخدام Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
