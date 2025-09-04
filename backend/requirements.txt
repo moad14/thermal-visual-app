@@ -13,6 +13,4 @@ flirimageextractor
 ultralytics
 
 # ====== Torch نسخة CPU فقط (خفيفة وتشتغل على Render) ======
-torch==2.2.0+cpu
-torchvision==0.17.0+cpu
--f https://download.pytorch.org/whl/torch_stable.html
+torch==2.2.0+cpu torchvision==0.17.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
