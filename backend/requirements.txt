@@ -1,16 +1,6 @@
-# ====== أساسيات تشغيل API ======
 fastapi
-uvicorn[standard]
-python-multipart
-pillow
-numpy
-
-# ====== الرؤية الحاسوبية (خاصة بالكاميرا والصور) ======
+uvicorn
 opencv-python-headless
-flirimageextractor
-
-# ====== YOLOv8 والـ Ultralytics ======
+numpy
 ultralytics
-
-# ====== Torch نسخة CPU فقط (خفيفة وتشتغل على Render) ======
-torch==2.2.0+cpu torchvision==0.17.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+flirimageextractor
